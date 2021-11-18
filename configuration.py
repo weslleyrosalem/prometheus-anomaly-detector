@@ -19,7 +19,7 @@ class Configuration:
     """docstring for Configuration."""
 
     # url for the prometheus host
-    prometheus_url = os.getenv("FLT_PROM_URL")
+    prometheus_url = os.getenv("https://prometheus-k8s-openshift-monitoring.apps.cluster-rhqhf.rhqhf.sandbox902.opentlc.com/graph")
 
     # any headers that need to be passed while connecting to the prometheus host
     prom_connect_headers = None
@@ -35,8 +35,7 @@ class Configuration:
     # it will scrape all the timeseries that match the config.
     metrics_list = str(
         os.getenv(
-            "FLT_METRICS_LIST",
-            "up{app='openshift-web-console', instance='172.44.0.18:8443'}",
+            "up{app='tekton-pipelines-controller', instance='10.131.0.38:9090'}",
         )
     ).split(";")
 
